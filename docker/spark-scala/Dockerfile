@@ -1,7 +1,7 @@
 FROM java:8-alpine
 
 ENV HADOOP_VERSION=2.7 \
-    SCALA_VERSION=2.12.7 \
+    SCALA_VERSION=2.10.7 \
     SCALA_HOME=/usr/local/share/scala \
     SPARK_PATH=/usr/local/spark \
     SPARK_VERSION=2.3.2 \
@@ -30,6 +30,8 @@ WORKDIR /tmp
 RUN wget "http://apache.cs.utah.edu/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz" \
     && tar -xzf "spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz" --directory "$SPARK_PATH" --strip-components 1 \
     && rm "spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz"
+
+ENV PATH "$PATH:/usr/local/spark/bin/"
 
 # Scala
 RUN curl "http://downloads.lightbend.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.tgz" > scala-${SCALA_VERSION}.tgz \
