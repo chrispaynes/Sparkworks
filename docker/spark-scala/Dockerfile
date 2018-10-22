@@ -4,7 +4,7 @@ ENV HADOOP_VERSION=2.7 \
     SCALA_VERSION=2.10.7 \
     SCALA_HOME=/usr/local/share/scala \
     SPARK_PATH=/usr/local/spark \
-    SPARK_VERSION=2.3.2 \
+    SPARK_VERSION=2.2.0 \
     SBT_PATH=/usr/local/sbt \
     SBT_VERSION=1.2.6 \
     PATH=$PATH:"$SPARK_PATH"/bin \
@@ -27,7 +27,7 @@ RUN set -x \
 WORKDIR /tmp
 
 # Apache Spark
-RUN wget "http://apache.cs.utah.edu/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz" \
+RUN wget "https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz" \
     && tar -xzf "spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz" --directory "$SPARK_PATH" --strip-components 1 \
     && rm "spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz"
 
