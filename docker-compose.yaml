@@ -1,0 +1,11 @@
+version: '2.4'
+services:
+    spark-scala:
+        container_name: spark-scala
+        build:
+            context: .
+            dockerfile: ./docker/spark-scala/Dockerfile
+        # restart: always
+        volumes:
+            - './scala:/app'
+        cpus: 0.5
