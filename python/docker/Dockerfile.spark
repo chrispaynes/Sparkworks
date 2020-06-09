@@ -1,0 +1,13 @@
+FROM jupyter/all-spark-notebook
+
+ENV SPARK_CLASSPATH=/home/jovyan/work/lib
+
+COPY ./requirements.txt ./work/
+
+RUN pip install -r ./work/requirements.txt
+
+RUN mkdir -p /home/jovyan/work/lib
+
+# add the postgres driver JAR
+RUN cd /home/jovyan/work/lib \
+    && wget https://jdbc.postgresql.org/download/postgresql-42.2.12.jar
